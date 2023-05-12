@@ -26,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -299,7 +300,7 @@ fun CalculatorAppearance(modifier: Modifier = Modifier) {
         }
     }
 
-
+    // @Composable がよくわからなかったので stringResource が使えなかったためハードコード
     fun callbackWhenError(description: List<Any>) : List<Any> {
         if (description.isEmpty()) {
             additionalMessage = arrayAddAt(
@@ -350,12 +351,12 @@ fun CalculatorAppearance(modifier: Modifier = Modifier) {
                 )
                 Text(
                     text = when (operation) {
-                        ButtonName.PLUS -> "+"
-                        ButtonName.MINUS -> "-"
-                        ButtonName.TIMES -> "×"
-                        ButtonName.DIVIDED -> "÷"
-                        null -> "?"
-                        else -> "error: Unknown operation"
+                        ButtonName.PLUS -> stringResource(R.string.display_plus)
+                        ButtonName.MINUS -> stringResource(R.string.display_minus)
+                        ButtonName.TIMES -> stringResource(R.string.display_times)
+                        ButtonName.DIVIDED -> stringResource(R.string.display_divided)
+                        null -> stringResource(R.string.display_no_operation)
+                        else -> stringResource(R.string.unknown_operation)
                     },
                     fontSize = 40.sp,
                     textAlign = TextAlign.End
@@ -374,95 +375,95 @@ fun CalculatorAppearance(modifier: Modifier = Modifier) {
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.SEVEN) }
                         ) {
-                            Text("7")
+                            Text(stringResource(R.string.button_7))
                         }
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.EIGHT) },
                             modifier = modifier.padding(start = 5.dp)
                         ) {
-                            Text("8")
+                            Text(stringResource(R.string.button_8))
                         }
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.NINE) },
                             modifier = modifier.padding(start = 5.dp)
                         ) {
-                            Text("9")
+                            Text(stringResource(R.string.button_9))
                         }
                     }
                     Row {
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.FOUR) }
                         ) {
-                            Text("4")
+                            Text(stringResource(R.string.button_4))
                         }
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.FIVE) },
                             modifier = modifier.padding(start = 5.dp)
                         ) {
-                            Text("5")
+                            Text(stringResource(R.string.button_5))
                         }
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.SIX) },
                             modifier = modifier.padding(start = 5.dp)
                         ) {
-                            Text("6")
+                            Text(stringResource(R.string.button_6))
                         }
                     }
                     Row {
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.ONE) }
                         ) {
-                            Text("1")
+                            Text(stringResource(R.string.button_1))
                         }
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.TWO) },
                             modifier = modifier.padding(start = 5.dp)
                         ) {
-                            Text("2")
+                            Text(stringResource(R.string.button_2))
                         }
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.THREE) },
                             modifier = modifier.padding(start = 5.dp)
                         ) {
-                            Text("3")
+                            Text(stringResource(R.string.button_3))
                         }
                     }
                     Button(onClick = { result = calculator.buttonPress(ButtonName.ZERO) }) {
-                        Text("0")
+                        Text(stringResource(R.string.button_0))
                     }
                 }
                 Column {
                     Button(onClick = { result = calculator.buttonPress(ButtonName.CLEAR) }) {
-                        Text("C")
+                        Text(stringResource(R.string.button_clear))
                     }
                     Row {
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.PLUS) }
                         ) {
-                            Text("+")
+                            Text(stringResource(R.string.button_plus))
                         }
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.MINUS) },
                             modifier = modifier.padding(start = 5.dp)
                         ) {
-                            Text("-")
+                            Text(stringResource(R.string.button_minus))
                         }
                     }
                     Row {
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.TIMES) }
                         ) {
-                            Text("×")
+                            Text(stringResource(R.string.button_times))
                         }
                         Button(
                             onClick = { result = calculator.buttonPress(ButtonName.DIVIDED) },
                             modifier = modifier.padding(start = 5.dp)
                         ) {
-                            Text("÷")
+                            Text(stringResource(R.string.button_divided))
                         }
                     }
                     Button(onClick = { result = calculator.buttonPress(ButtonName.EQUAL) }) {
-                        Text("=")
+                        Text(stringResource(R.string.button_equal))
                     }
                 }
             }
@@ -499,7 +500,7 @@ fun CalculatorAppearance(modifier: Modifier = Modifier) {
                                 .width(35.dp)
                         ) {
                             Text(
-                                text = "OK",
+                                text = stringResource(R.string.button_delete_error_message),
                             )
                         }
                     }
@@ -507,7 +508,7 @@ fun CalculatorAppearance(modifier: Modifier = Modifier) {
             }
         }
         Text(
-            text = "ver0.1",
+            text = stringResource(R.string.version),
             modifier = Modifier
                 .align(alignment = Alignment.End)
         )
